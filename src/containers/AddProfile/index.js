@@ -8,7 +8,6 @@ class AddProfile extends Component {
     return (
       <div>
         <PersonalForm />
-        <ImagePicker />
       </div>
     );
   }

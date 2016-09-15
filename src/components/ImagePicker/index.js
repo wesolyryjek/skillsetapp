@@ -21,7 +21,6 @@ class ImagePicker extends Component {
       <div className="container">
         <input type="file" name="myImage" accept="image/x-png, image/gif, image/jpeg" className="input" onChange={(e)=>this._handleImageChange(e)}/>
         <div className="imgPreview">
-      
         </div>
       </div>
     );

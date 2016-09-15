@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import store from '../../store';
