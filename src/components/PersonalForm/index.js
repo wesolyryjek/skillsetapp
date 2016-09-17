@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import store from '../../store';
@@ -26,11 +25,13 @@ class PersonalForm extends Component {
                 name="lastName"
                 value={lastName}
                 placeholder="Last Name"
+                onChange={this._onInputChange}
       />
         <input  type="email"
                 name="email"
                 value={email}
                 placeholder="E mail"
+                onChange={this._onInputChange}
       />
       </form>
     );
