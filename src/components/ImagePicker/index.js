@@ -1,30 +1,22 @@
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react';
 
 import './styles.css';
 
-class ImagePicker extends Component {
-
-  _handleImageChange(e) {
-    e.preventDefault();
-
-    let reader = new FileReader();
-    let file = e.target.files[0];
-    let url = '';
-    reader.onloadend = () => {
-      url = reader.result
-    }
-
-    reader.readAsDataURL(file);
-  }
-  render() {
+function ImagePicker({ handleImageChange, photoSrc }) {
     return (
       <div className="container">
-        <input type="file" name="myImage" accept="image/x-png, image/gif, image/jpeg" className="input" onChange={(e)=>this._handleImageChange(e)}/>
+        <input type="file" name="myImage" accept="image/x-png, image/gif, image/jpeg" className="input" onChange={(e)=>handleImageChange(e)}/>
         <div className="imgPreview">
+          <img src={photoSrc} />
         </div>
       </div>
     );
-  }
 }
 
+
 export default ImagePicker;
+
+ImagePicker.propTypes = {
+  handleImageChange: PropTypes.func,
+  photoSrc: PropTypes.string,
+}
