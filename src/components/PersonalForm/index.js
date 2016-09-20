@@ -25,11 +25,13 @@ class PersonalForm extends Component {
                 name="lastName"
                 value={lastName}
                 placeholder="Last Name"
+                onChange={this._onInputChange}
       />
         <input  type="email"
                 name="email"
                 value={email}
                 placeholder="E mail"
+                onChange={this._onInputChange}
       />
       </form>
     );
