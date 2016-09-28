@@ -6,3 +6,4 @@ export const personalFormFirstNameSelector = createSelector(personalFormStateSel
 export const personalFormLastNameSelector = createSelector(personalFormStateSelector, (personalForm) => personalForm.get('lastName'));
 export const personalFormEmailSelector = createSelector(personalFormStateSelector, (personalForm) => personalForm.get('email'));
 export const personalFormPhotoSrcSelector = createSelector(personalFormStateSelector, (personalForm) => personalForm.get('photoSrc'));
+export const personalFormTelephoneSelector = createSelector(personalFormStateSelector, (personalForm) => personalForm.get('telephone'));

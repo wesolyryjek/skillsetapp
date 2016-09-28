@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-function PersonalForm({ firstName, lastName, email, onInputChange }) {
+function PersonalForm({ firstName, lastName, email, telephone, onInputChange }) {
   return (
       <form>
         <input  type="text"
@@ -21,6 +21,12 @@ function PersonalForm({ firstName, lastName, email, onInputChange }) {
                 placeholder="E mail"
                 onChange={onInputChange}
       />
+        <input  type="tel"
+                name="telephone"
+                value={telephone}
+                placeholder="Telephone"
+                onChange={onInputChange}
+      />
       </form>
     );
   }
@@ -29,6 +35,7 @@ PersonalForm.propTypes = {
   firstName: PropTypes.string,
   lastName: PropTypes.string,
   email: PropTypes.string,
+  telephone: PropTypes.string,
   onInputChange: PropTypes.func,
 }
 

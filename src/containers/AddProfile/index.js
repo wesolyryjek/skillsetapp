@@ -1,10 +1,19 @@
 import React, { Component, PropTypes } from 'react';
 import store from '../../store';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import { updatePersonalFormField, updatePersonalFormPhoto } from '../../actions/personalFormField';
+
 import PersonalForm from '../../components/PersonalForm';
 import ImagePicker from '../../components/ImagePicker';
-import { personalFormFirstNameSelector, personalFormLastNameSelector, personalFormEmailSelector, personalFormPhotoSrcSelector} from '../../selectors/personalFormSelectors';
+import Button from '../../components/Button';
+
+import { personalFormFirstNameSelector,
+         personalFormLastNameSelector,
+         personalFormEmailSelector,
+         personalFormPhotoSrcSelector,
+         personalFormTelephoneSelector} from '../../selectors/personalFormSelectors';
+import photo from '../../img/photo.png';
 
 class AddProfile extends Component {
   _onInputChange = ({target: { name, value }}) => {
@@ -19,8 +28,11 @@ class AddProfile extends Component {
     }
     file && reader.readAsDataURL(file);
     }
+  _goToExperience = () => {
+    store.dispatch(push('/addskills'));
+  }
   render() {
-    const { firstName, lastName, email, photoSrc } = this.props;
+    const { firstName, lastName, email, telephone, photoSrc } = this.props;
     return (
       <div>
         <PersonalForm
@@ -28,11 +40,16 @@ class AddProfile extends Component {
           firstName={firstName}
           lastName={lastName}
           email={email}
+          telephone={telephone}
         />
         <ImagePicker
           handleImageChange={this._handleImageChange}
           photoSrc={photoSrc}
         />
+        <div>
+          <img src={photo} />
+        </div>
+        <Button onClick={this._goToExperience}> SUMBIT </Button>
       </div>
     );
   }
@@ -43,6 +60,7 @@ AddProfile.propTypes = {
   lastName: PropTypes.string,
   email: PropTypes.string,
   photoSrc: PropTypes.string,
+  telephone: PropTypes.string,
 }
 
 export default connect(
@@ -51,4 +69,5 @@ export default connect(
     lastName: personalFormLastNameSelector(state),
     email: personalFormEmailSelector(state),
     photoSrc: personalFormPhotoSrcSelector(state),
+    telephone: personalFormTelephoneSelector(state),
   }))(AddProfile);
