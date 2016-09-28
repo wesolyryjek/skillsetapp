@@ -16,27 +16,29 @@ class AddSkills extends Component {
     this.setState({inputValue: value})
   }
   _handleAddSkill = () => {
-    store.dispatch(addSkill(this.state.inputValue, 0}));
-    console.log(store.getState());
+    store.dispatch(addSkill({name: this.state.inputValue, level: 0}));
   }
   render() {
-    const { addSkill } = this.props;
+    const { skills } = this.props;
     return (
       <div>
         <PersonalSkills
           onInputChange={this._onInputChange}
           addSkill={this._handleAddSkill}
         />
+        { skills && skills.map((item, index) => {
+          return <div key={index}>{item.name}</div>
+        })}
       </div>
     );
   }
 }
 
 AddSkills.propTypes = {
-  addSkill: PropTypes.string,
+  skills: PropTypes.any,
 }
 
 export default connect(
   (state) => ({
-    addSkill: personalSkillsAddSkillSelector(state),
+    skills: personalSkillsAddSkillSelector(state),
 }))(AddSkills);
