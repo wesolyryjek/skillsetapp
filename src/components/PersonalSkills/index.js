@@ -2,19 +2,21 @@ import React, { PropTypes } from 'react';
 
 function PersonalSkills({ addSkill, onInputChange }) {
   return (
+    <div>
       <form>
         <input  type="text"
                 name="addSkill"
-                value={addSkill}
                 placeholder="Add Skill"
                 onChange={onInputChange}
-      />
+        />
       </form>
+        <button onClick={addSkill} />
+      </div>
     );
   }
 
 PersonalSkills.propTypes = {
-  addSkill: PropTypes.string,
+  addSkill: PropTypes.func,
   onInputChange: PropTypes.func,
 }
 

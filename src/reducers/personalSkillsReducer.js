@@ -8,8 +8,8 @@ const initialState =  new (Record({
 export default function skillsReducer(state = initialState, action) {
   switch(action.type) {
     case Actions.ADD_SKILL:
-      const { skillName, skillLevel } = action.payloads;
-      return state.setIn('skills', action.payloads );
+      {const newValue = state.get('skills').push(action.payloads);
+      return state.set('skills', newValue );}
     default:
       return state;
   }

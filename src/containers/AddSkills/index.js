@@ -7,8 +7,17 @@ import { personalSkillsAddSkillSelector } from '../../selectors/personalSkillsSe
 import PersonalSkills from '../../components/PersonalSkills';
 
 class AddSkills extends Component {
-  _handleSkillChange = ({target: { name, value }}) => {
-    store.dispatch(addSkill({name, value}));
+  constructor(props) {
+    super(props);
+    this.state = {inputValue: ''};
+  }
+
+  _onInputChange = ({target: { name, value }}) => {
+    this.setState({inputValue: value})
+  }
+  _handleAddSkill = () => {
+    store.dispatch(addSkill(this.state.inputValue, 0}));
+    console.log(store.getState());
   }
   render() {
     const { addSkill } = this.props;
@@ -16,7 +25,7 @@ class AddSkills extends Component {
       <div>
         <PersonalSkills
           onInputChange={this._onInputChange}
-          addSkill={addSkill}
+          addSkill={this._handleAddSkill}
         />
       </div>
     );
