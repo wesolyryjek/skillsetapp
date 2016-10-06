@@ -10,7 +10,7 @@ import PersonalSkills from '../../components/PersonalSkills';
 class AddSkills extends Component {
   constructor(props) {
     super(props);
-    this.state = {inputValue: '', level: 0};
+    this.state = {inputValue: '', inputLevel: 0};
   }
   _onInputChange = ({target: { value }}) => {
     value.length < 40 && this.setState({inputValue: value})
@@ -39,6 +39,7 @@ class AddSkills extends Component {
           addSkill={this._handleAddSkill}
           value={this.state.inputValue}
           onSetLevel={this._setSkillLevel}
+          rate={this.state.level}
         />
         { skills && skills.map(({ name, level }, index) => {
           return <SkillItem onDelete={this._delete} onChangeLevel={this._changeLevel} id={index} key={index} name={name} level={level} /> })}
