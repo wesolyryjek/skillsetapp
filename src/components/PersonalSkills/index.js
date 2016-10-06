@@ -4,7 +4,7 @@ import star from '../../img/star.svg';
 import starFilled from '../../img/star1.svg';
 import styles from './styles.css';
 
-function PersonalSkills({ addSkill, onInputChange, onChangeLevel, level, id, value }) {
+function PersonalSkills({ addSkill, onInputChange, value, level, onSetLevel, id, }) {
   return (
     <div>
       <form>
@@ -14,17 +14,13 @@ function PersonalSkills({ addSkill, onInputChange, onChangeLevel, level, id, val
                 onChange={onInputChange}
                 value={value}
         />
-      </form>
-
-      <div className="starContainer">
-        {[...new Array(5)].map((_, index)=>
-          <img  onClick={()=> onChangeLevel(id, index)}
-                className="star"
-                key={index}
-                src={index < level ? starFilled:star} /> )}
+      <div>
+        {[...new Array(5)].map((_, index)=> <img onClick={()=> onSetLevel(id, index)} className="star" key={index} src={index < level ? starFilled:star} /> )}
       </div>
 
-      <Button onClick={addSkill} > ADD </Button>
+      </form>
+        <Button onClick={addSkill} > ADD </Button>
+
     </div>
   );
 }
@@ -34,7 +30,7 @@ PersonalSkills.propTypes = {
   onInputChange: PropTypes.func,
   value: PropTypes.string,
   level: PropTypes.number,
-  onChangeLevel: PropTypes.func,
+  onSetLevel: PropTypes.func,
   id: PropTypes.number,
 }
 
