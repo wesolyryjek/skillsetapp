@@ -15,6 +15,8 @@ export default function skillsReducer(state = initialState, action) {
       const a = Object.assign({}, newValue, {level: action.level+1});
       const newSkills = state.get('skills').set(action.index, a);
       return state.set('skills', newSkills);}
+    case Actions.DELETE_SKILL:
+      return state.set(action.index);
     default:
       return state;
   }

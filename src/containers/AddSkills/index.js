@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import store from '../../store';
 import { connect } from 'react-redux';
-import { addSkill, changeSkillLevel } from '../../actions/personalSkillsAction';
+import { addSkill, changeSkillLevel, deleteSkill } from '../../actions/personalSkillsAction';
 import SkillItem from '../../components/SkillItem';
 import { personalSkillsAddSkillSelector } from '../../selectors/personalSkillsSelectors';
 
@@ -23,7 +23,9 @@ class AddSkills extends Component {
   _changeLevel = (index, level) => {
     store.dispatch(changeSkillLevel(index,level));
   }
-
+  _delete = (index) => {
+    store.dispatch(deleteSkill(index));
+  }
 
   render() {
     const { skills } = this.props;
@@ -35,7 +37,7 @@ class AddSkills extends Component {
           value={this.state.inputValue}
         />
         { skills && skills.map(({ name, level }, index) => {
-          return <SkillItem onChangeLevel={this._changeLevel} id={index} key={index} name={name} level={level} /> })}
+          return <SkillItem onDelete={this._delete} onChangeLevel={this._changeLevel} id={index} key={index} name={name} level={level} /> })}
       </div>
     );
   }
