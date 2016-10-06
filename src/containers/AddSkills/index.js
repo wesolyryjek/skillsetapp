@@ -35,9 +35,12 @@ class AddSkills extends Component {
           onInputChange={this._onInputChange}
           addSkill={this._handleAddSkill}
           value={this.state.inputValue}
+          onChangeLevel={this._changeLevel}
+          level={this.level}
+          id={this.index}
         />
         { skills && skills.map(({ name, level }, index) => {
-          return <SkillItem onDelete={this._delete} onChangeLevel={this._changeLevel} id={index} key={index} name={name} level={level} /> })}
+          return <SkillItem onDelete={this._delete}  id={index} key={index} name={name} level={level}  /> })}
       </div>
     );
   }

@@ -1,0 +1,22 @@
+.skillsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.star {
+  width: 50px;
+}
+
+.starContainer {
+  width: 50%;
+}
+
+.nameContainer {
+  width: 50%;
+}
+
+.fill {
+  fill: red;
+}
