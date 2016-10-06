@@ -4,7 +4,7 @@ import star from '../../img/star.svg';
 import starFilled from '../../img/star1.svg';
 import styles from './styles.css';
 
-function PersonalSkills({ addSkill, onInputChange, value, level, onSetLevel, rate, }) {
+function PersonalSkills({ addSkill, onInputChange, value, onSetLevel, rate, }) {
   return (
     <div>
       <form>
@@ -15,7 +15,7 @@ function PersonalSkills({ addSkill, onInputChange, value, level, onSetLevel, rat
                 value={value}
         />
       <div>
-        {[...new Array(5)].map((_, index)=> <img onClick={()=> onSetLevel(index)} className="star" key={index} src={index < level ? starFilled:star} /> )}
+        {[...new Array(5)].map((_, index)=> <img onClick={()=> onSetLevel(index)} className="star" key={index} src={index < rate ? starFilled:star} /> )}
       </div>
 
       </form>

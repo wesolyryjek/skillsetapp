@@ -15,20 +15,20 @@ class AddSkills extends Component {
   _onInputChange = ({target: { value }}) => {
     value.length < 40 && this.setState({inputValue: value})
   }
+  _setSkillLevel = (value) => {
+    this.setState({inputLevel: value+1});
+  }
   _handleAddSkill = () => {
     this.state.inputValue.length > 1 &&
-    store.dispatch(addSkill({name: this.state.inputValue, level:this.state.inputLevel}));
-    this.setState({inputValue:''});
+    store.dispatch(addSkill({name: this.state.inputValue, level:this.state.inputLevel+1}));
+    this.setState({inputValue:'', inputLevel: ''});
   }
   _changeLevel = (index, level) => {
     store.dispatch(changeSkillLevel(index,level));
   }
   _delete = (index) => {
-  store.dispatch(deleteSkill(index));
+    store.dispatch(deleteSkill(index));
 }
-  _setSkillLevel = (value) => {
-    this.setState({inputLevel: value})
-  }
 
   render() {
     const { skills } = this.props;
@@ -39,7 +39,7 @@ class AddSkills extends Component {
           addSkill={this._handleAddSkill}
           value={this.state.inputValue}
           onSetLevel={this._setSkillLevel}
-          rate={this.state.level}
+          rate={this.state.inputLevel}
         />
         { skills && skills.map(({ name, level }, index) => {
           return <SkillItem onDelete={this._delete} onChangeLevel={this._changeLevel} id={index} key={index} name={name} level={level} /> })}
